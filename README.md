@@ -1,4 +1,4 @@
-okay given this is my dir structure and this is my readme: # Mullvad VPN SOCKS Proxy Toggle
+# Mullvad VPN SOCKS Proxy Toggle
 
 Toggle the SOCKS proxy for Mullvad VPN on macOS with a script or Automator app.
 
@@ -36,4 +36,4 @@ Adjust the script for custom configurations.
 - Reduces CAPTCHAs.
 - Provides static IP addresses.
 
-Accessible when connected to Mullvad. For setup, visit [Mullvad SOCKS5 proxy guide](https://mullvad.net/en/help/socks5-proxy/). ####How
+Accessible when connected to Mullvad. For setup, visit [Mullvad SOCKS5 proxy guide](https://mullvad.net/en/help/socks5-proxy/).
