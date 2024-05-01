@@ -177,3 +177,4 @@ stylelint.config.js
 /cert.pem
 /key.pem
 /app/static/user_img/*
+/Toggle SOCKS Proxy.app/
