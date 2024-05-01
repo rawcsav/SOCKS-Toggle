@@ -1,39 +1,73 @@
-# Mullvad VPN SOCKS Proxy Toggle
+# SOCKS Proxy Toggle for macOS
 
-Toggle the SOCKS proxy for Mullvad VPN on macOS with a script or Automator app.
+Easily toggle the SOCKS proxy on or off for any SOCKS proxy server on macOS with a script or an Automator app. This tool simplifies the process of enabling or disabling the SOCKS proxy, providing a convenient way to configure and use SOCKS proxies on your Mac.
 
-## Quick Start
+## Features
 
-- **Script**: `chmod +x toggle_socks_proxy.sh && ./toggle_socks_proxy.sh`
-- **Automator App**: Download, unzip, and run `ToggleSOCKS.app`.
+- Easily toggle the SOCKS proxy on or off with a single click or command.
+- Works with any SOCKS proxy server, not limited to Mullvad VPN.
+- Provides notifications on the status of the SOCKS proxy (enabled or disabled).
+- Customizable settings for the Wi-Fi service, SOCKS proxy IP, and port.
+- Persistent configuration: User-specified options are saved and used for subsequent toggles.
 
-## About
+## Prerequisites
 
-This tool toggles the SOCKS proxy for Mullvad VPN's OpenVPN and WireGuard protocols, providing notifications on status changes.
+- macOS operating system
+- SOCKS proxy server details (IP address and port)
 
 ## Installation
 
-- **Script**: Download `toggle_socks_proxy.sh` from this repository.
-- **Automator App**: Download the latest `.zip` from the releases, unzip, and move to Applications.
+### Script
+
+1. Download the `toggle_socks_proxy.sh` script from this repository.
+2. Open Terminal and navigate to the directory where the script is located.
+3. Make the script executable by running the following command:
+
+   ```bash
+   chmod +x toggle_socks_proxy.sh
+   ```
+
+### Automator App
+
+1. Download the latest release `.zip` file from the releases section of this repository.
+2. Unzip the downloaded file.
+3. Move the `ToggleSOCKS.app` to your Applications folder.
 
 ## Usage
 
-- **Script**: Run `./toggle_socks_proxy.sh` in the terminal.
-- **Automator App**: Double-click `ToggleSOCKS.app`.
+### Script
+
+1. Open Terminal and navigate to the directory where the `toggle_socks_proxy.sh` script is located.
+2. Run the script with the following command:
+
+   ```bash
+   ./toggle_socks_proxy.sh [-s <wifi_service>] [-i <proxy_ip>] [-p <proxy_port>]
+   ```
+
+   - `-s <wifi_service>`: Specify the Wi-Fi service name (default: "Wi-Fi")
+   - `-i <proxy_ip>`: Specify the SOCKS proxy IP address (default: "127.0.0.1")
+   - `-p <proxy_port>`: Specify the SOCKS proxy port (default: "1080")
+
+### Automator App
+
+1. Double-click the `ToggleSOCKS.app` in your Applications folder.
 
 ## Configuration
 
-Default settings:
+The default configuration values are:
+
 - Wi-Fi service: `Wi-Fi`
-- SOCKS proxy IP: `10.64.0.1` (WireGuard) or `10.8.0.1` (OpenVPN)
+- SOCKS proxy IP: `10.64.0.1`
 - SOCKS proxy port: `1080`
 
-Adjust the script for custom configurations.
+If you need to customize these values, you can modify the script accordingly or provide the options when running the script. When running the script or app with custom options, those options will be saved and used for subsequent toggles.
 
-## Mullvad SOCKS5 Proxy Benefits
+## Benefits of Using SOCKS Proxies
 
-- Acts as a kill switch.
-- Reduces CAPTCHAs.
-- Provides static IP addresses.
+- Enhances privacy and security by masking your IP address.
+- Bypasses network restrictions and access geo-blocked content.
+- Improves performance by reducing latency and bandwidth usage.
 
-Accessible when connected to Mullvad. For setup, visit [Mullvad SOCKS5 proxy guide](https://mullvad.net/en/help/socks5-proxy/).
+## Feedback and Contributions
+
+If you encounter any issues, have suggestions, or would like to contribute to this tool, please open an issue or submit a pull request on the GitHub repository.
