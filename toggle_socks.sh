@@ -63,24 +63,23 @@ check_mullvad_connection() {
     fi
 }
 
-# Function to check internet connectivity through the proxy and measure latency
 check_internet_connection() {
     local test_url="https://www.google.com"
     local timeout=5
     local start_time end_time latency
 
-    start_time=$(date +%s)  # Capture time in seconds
+    start_time=$(date +%s)  #
     if curl --socks5 "$PROXY_IP:$PROXY_PORT" -s --head --request GET "$test_url" --connect-timeout "$timeout" | grep "HTTP/[1-3]" > /dev/null; then
-        end_time=$(date +%s)  # Capture time in seconds
-        latency=$((end_time - start_time))  # Calculate latency in seconds
-        verbose "Proxy connection is working. Latency: ${latency}s"  # Output latency in seconds
+        end_time=$(date +%s)
+        latency=$((end_time - start_time))
+        verbose "Proxy connection is working. Latency: ${latency}s"
         return 0
     else
         verbose "Proxy connection failed."
         return 1
     fi
 }
-# Function to enable SOCKS proxy
+
 enable_socks_proxy() {
     verbose "Enabling SOCKS Proxy..."
     if ! /usr/sbin/networksetup -setsocksfirewallproxy "$WIFI_SERVICE" "$PROXY_IP" "$PROXY_PORT"; then
@@ -92,7 +91,6 @@ enable_socks_proxy() {
         return 1
     fi
 
-    # Check internet connectivity through the proxy
     verbose "Checking internet connectivity through the proxy..."
     if check_internet_connection; then
         verbose "Successfully connected to the internet through the proxy."
@@ -105,7 +103,6 @@ enable_socks_proxy() {
     fi
 }
 
-# Load configuration from file if it exists
 # Load configuration from file if it exists
 if [ -f "$CONFIG_FILE" ]; then
     verbose "Loading configuration from $CONFIG_FILE"
