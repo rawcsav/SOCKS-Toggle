@@ -19,12 +19,12 @@ Easily toggle the SOCKS proxy on or off for any SOCKS proxy server on macOS with
 
 ### Script
 
-1. Download the `toggle_socks_proxy.sh` script from this repository.
+1. Download the `toggle_socks.sh` script from this repository.
 2. Open Terminal and navigate to the directory where the script is located.
 3. Make the script executable by running the following command:
 
    ```bash
-   chmod +x toggle_socks_proxy.sh
+   chmod +x toggle_socks.sh
    ```
 
 ### Automator App
@@ -37,11 +37,11 @@ Easily toggle the SOCKS proxy on or off for any SOCKS proxy server on macOS with
 
 ### Script
 
-1. Open Terminal and navigate to the directory where the `toggle_socks_proxy.sh` script is located.
+1. Open Terminal and navigate to the directory where the `toggle_socks.sh` script is located.
 2. Run the script with the following command:
 
    ```bash
-   ./toggle_socks_proxy.sh [-s <wifi_service>] [-i <proxy_ip>] [-p <proxy_port>]
+   ./toggle_socks.sh [-s <wifi_service>] [-i <proxy_ip>] [-p <proxy_port>]
    ```
 
    - `-s <wifi_service>`: Specify the Wi-Fi service name (default: "Wi-Fi")
