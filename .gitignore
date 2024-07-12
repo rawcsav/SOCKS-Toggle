@@ -178,3 +178,4 @@ stylelint.config.js
 /key.pem
 /app/static/user_img/*
 /Toggle SOCKS Proxy.app/
+/toggle_socks_proxy.conf
