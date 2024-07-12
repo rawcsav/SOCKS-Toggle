@@ -69,18 +69,17 @@ check_internet_connection() {
     local timeout=5
     local start_time end_time latency
 
-    start_time=$(date +%s%3N)
+    start_time=$(date +%s)  # Capture time in seconds
     if curl --socks5 "$PROXY_IP:$PROXY_PORT" -s --head --request GET "$test_url" --connect-timeout "$timeout" | grep "HTTP/[1-3]" > /dev/null; then
-        end_time=$(date +%s%3N)
-        latency=$((end_time - start_time))
-        verbose "Proxy connection is working. Latency: ${latency}ms"
+        end_time=$(date +%s)  # Capture time in seconds
+        latency=$((end_time - start_time))  # Calculate latency in seconds
+        verbose "Proxy connection is working. Latency: ${latency}s"  # Output latency in seconds
         return 0
     else
         verbose "Proxy connection failed."
         return 1
     fi
 }
-
 # Function to enable SOCKS proxy
 enable_socks_proxy() {
     verbose "Enabling SOCKS Proxy..."
