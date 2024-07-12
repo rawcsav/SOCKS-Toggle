@@ -179,3 +179,4 @@ stylelint.config.js
 /app/static/user_img/*
 /Toggle SOCKS Proxy.app/
 /config.conf
+/SOCKS-Toggle
