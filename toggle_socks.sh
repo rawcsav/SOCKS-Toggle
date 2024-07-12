@@ -1,10 +1,7 @@
 #!/bin/bash
-# This script toggles the SOCKS proxy on or off for a specified Wi-Fi service on macOS.
-# It is designed to work with Mullvad VPN's SOCKS proxy feature for both OpenVPN and WireGuard.
-#
 # Usage:
-# chmod +x toggle_socks_proxy.sh   # Make the script executable
-# ./toggle_socks_proxy.sh [-s <wifi_service>] [-i <proxy_ip>] [-p <proxy_port>] [-m true|false] [-v]
+# chmod +x toggle_socks.sh   # Make the script executable
+# ./toggle_socks.sh [-s <wifi_service>] [-i <proxy_ip>] [-p <proxy_port>] [-m true|false] [-v]
 #
 # Options:
 # -s <wifi_service>   Specify the Wi-Fi service name (default: "Wi-Fi")
@@ -39,7 +36,7 @@ check_internet_connection() {
     if curl --socks5 "$PROXY_IP:$PROXY_PORT" -s --head --request GET "$test_url" --connect-timeout "$timeout" | grep -q "HTTP/[1-3]"; then
         local end_time=$(date +%s)
         local latency=$((end_time - start_time))
-        verbose "Proxy connection is working. Latency: ${latency}s"
+        verbose "Latency: ${latency}s"
         return 0
     else
         verbose "Proxy connection failed."
@@ -87,7 +84,7 @@ load_config() {
     fi
 }
 
-CONFIG_FILE="$(dirname "$0")/toggle_socks_proxy.conf"
+CONFIG_FILE="$(dirname "$0")/config.conf"
 
 
 save_config() {
