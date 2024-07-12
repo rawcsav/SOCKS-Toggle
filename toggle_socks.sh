@@ -55,7 +55,6 @@ enable_socks_proxy() {
         verbose "Successfully connected to the internet through the proxy."
         return 0
     else
-        verbose "Warning: Unable to connect to the internet through the proxy. Disabling proxy."
         /usr/sbin/networksetup -setsocksfirewallproxystate "$WIFI_SERVICE" off
         echo "Proxy disabled due to connectivity issues."
         return 1
