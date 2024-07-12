@@ -106,11 +106,39 @@ enable_socks_proxy() {
 }
 
 # Load configuration from file if it exists
+# Load configuration from file if it exists
 if [ -f "$CONFIG_FILE" ]; then
     verbose "Loading configuration from $CONFIG_FILE"
     source "$CONFIG_FILE"
 else
-    verbose "Configuration file not found. Using default settings."
+    verbose "Configuration file not found. Prompting for user input."
+    echo "No configuration file found. Please enter settings or press enter to use default values."
+
+    # Prompt for Wi-Fi service name
+    read -p "Enter Wi-Fi Service Name (default: Wi-Fi): " input_wifi_service
+    WIFI_SERVICE="${input_wifi_service:-Wi-Fi}"
+
+    # Prompt for proxy IP
+    read -p "Enter Proxy IP (default: 10.64.0.1): " input_proxy_ip
+    PROXY_IP="${input_proxy_ip:-10.64.0.1}"
+
+    # Prompt for proxy port
+    read -p "Enter Proxy Port (default: 1080): " input_proxy_port
+    PROXY_PORT="${input_proxy_port:-1080}"
+
+    # Prompt for Mullvad VPN check
+    read -p "Enable Mullvad VPN connection check? (true/false, default: false): " input_check_mullvad
+    CHECK_MULLVAD="${input_check_mullvad:-false}"
+
+    # Save the user input to the configuration file
+    echo "Saving configuration..."
+    cat > "$CONFIG_FILE" <<EOF
+WIFI_SERVICE="$WIFI_SERVICE"
+PROXY_IP="$PROXY_IP"
+PROXY_PORT="$PROXY_PORT"
+CHECK_MULLVAD=$CHECK_MULLVAD
+EOF
+    verbose "Configuration saved to $CONFIG_FILE"
 fi
 
 # Parse command-line arguments
@@ -125,8 +153,6 @@ while getopts ":s:i:p:m:v" opt; do
     esac
 done
 
-# Save configuration to file
-# Note: This will persist any changes made via command-line arguments
 verbose "Saving configuration to $CONFIG_FILE"
 cat > "$CONFIG_FILE" <<EOF
 WIFI_SERVICE="$WIFI_SERVICE"
